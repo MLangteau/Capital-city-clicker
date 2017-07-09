@@ -13,7 +13,8 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //  defines the guard to protect/not the user guard (only allows users)
+        $this->middleware('auth:admin');
     }
 
     /**
