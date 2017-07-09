@@ -54,12 +54,27 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Auth\AuthenticationException  $exception
      * @return \Illuminate\Http\Response
      */
+    //
+    //  This only is fired when it has an AuthenticationException
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
+            //  api requests here (that why it's Json instead of a full web request) - 401 http code
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
+// Added the guard and switch statements below and changed final redirect ($login).
+// This solves, if there is a page protected by auth/middleware, this will ensure they are directed to the
+// correct page, if they are not logged in.  We just want the web or admin guards set up in config/auth.php
+        $guard = array_get($exception->guards(), 0);
 
-        return redirect()->guest(route('login'));
+        switch ($guard) {
+            case 'admin':
+                $login = 'admin.login';
+                break;
+            default:
+                $login = 'login';
+                break;
+        }
+        return redirect()->guest(route($login));
     }
 }

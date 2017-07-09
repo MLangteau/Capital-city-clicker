@@ -50,11 +50,14 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,  /*  <-this file should not be changed.
+                              the previous file's exceptions are handled at App/Exceptions/Handler.php */
+
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,    /* this file may be changed.
+                    Only for people not logged in.  Will go to home page to be authenticated */
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }
