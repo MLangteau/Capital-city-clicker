@@ -12,7 +12,9 @@ class AdminLoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        //  adjusted this to handle logouts (otherwise, would only go to logout if logged out)
+        //  could put multiple in the logout array (for multiple methods, like in the LoginController)
+        $this->middleware('guest:admin', ['except' =>['logout']]);
     }
 
     public function showLoginForm()
@@ -44,4 +46,22 @@ class AdminLoginController extends Controller
             // if unsuccessful, then redirect back to the login with the form data
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
+    /**
+     * Log ONLY the admin out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    //  copied this piece from vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php file
+    public function logout()  // don't need request in here  //  need to setup a route
+    {
+        Auth::guard('admin')->logout();     // using the 'admin' guard from config/auth.php
+
+/*      // commented these out to keep the session data, so only logs out admin, not user
+        $request->session()->flush();
+        $request->session()->regenerate();  */
+
+        return redirect('/');
+    }
 }
+

@@ -19,10 +19,12 @@ Auth::routes();
 
 // name your routes, so that you don't have to change your authentication if you change your URLs in the future
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     // this one needs to be last; otherwise, the ones before with admin/??? will get caught in this one
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -34,6 +35,24 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //  adjusted this to handle logouts (otherwise, would only go to logout if logged out)
+        $this->middleware('guest', ['except' =>['logout', 'userLogout']]);
+    }
+    /**
+     * Log ONLY the admin out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    //  copied this piece from vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php file
+    public function userLogout()  // don't need request
+    {
+        Auth::guard('web')->logout();     // using the 'admin' guard from config/auth.php  (also needed to rename logout)
+
+        /*      // commented these out to keep the session data, so only logs out admin, not user
+                $request->session()->flush();
+                $request->session()->regenerate();  */
+
+        return redirect('/');
     }
 }
