@@ -80,8 +80,12 @@
            <div class="container">
                <div class="row">
                    <div class="col-md-8 col-md-offset-2">
-                       @component('components.who')
-                       @endcomponent
+                       {{--@component('components.who')--}}
+                       {{--@endcomponent--}}
+                       <p>Site Purpose:</p>
+                       <p>Games:</p>
+                       <p>Features: Admin and User Logins/Logouts</p>
+                       <p>Tech Stack: PHP, Laravel, JavaScript</p>
                    </div>
                </div>
            </div>
