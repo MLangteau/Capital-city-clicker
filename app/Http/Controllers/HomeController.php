@@ -1,28 +1,53 @@
 <?php
+//
+//namespace App\Http\Controllers;
+//
+//use Illuminate\Http\Request;
+//
+//class HomeController extends Controller
+//{
+//    /**
+//     * Create a new controller instance.
+//     *
+//     * @return void
+//     */
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
+//
+//    /**
+//     * Show the application dashboard.
+//     *
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function index()
+//    {
+//        return view('home');
+//    }
+//}
+//<?php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
+//        $this->middleware('auth',['except' => 'index']);
         $this->middleware('auth');
     }
-
     /**
-     * Show the application dashboard.
+     * Show the application game options.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home');
+        $games = Game::all(); // using Eloquent
+        return view('games.index')->with('games',$games);
     }
 }

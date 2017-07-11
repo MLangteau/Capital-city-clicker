@@ -19,7 +19,8 @@ Auth::routes();
 
 // name your routes, so that you don't have to change your authentication if you change your URLs in the future
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::get('/games', 'GamesController@index')->name('games.choices');
 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
