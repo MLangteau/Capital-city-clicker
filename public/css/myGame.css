@@ -1,0 +1,32 @@
+.quiz-rect {
+    /*background: #e5e5e5;*/
+    border: 1em solid #2a88bd;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 40%;
+    margin-top: -1px;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    padding: 0;
+    text-align: center;
+    width: 30%;
+    position:relative;
+}
+/*.all-games {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*margin: auto;*/
+/*}*/
+
+.gm-title {
+    font-size: 15px;
+}
+.gm-btn {
+    clear: both;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
