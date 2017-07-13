@@ -13,7 +13,7 @@
                     <strong class="gm-title">{{$game->name}}</strong><hr>
                     <small>{{$game->description}}</small><hr>
                     @if ($game->status)
-                        <button class="gm-btn"><a href="/game{{$game->id}}">Press to Play NOW!</a></button>
+                        <button class="gm-btn"><a href="/game{{$game->id}}">Press to Play!</a></button>
                     @else
                         <button class="gm-btn"><a href="/game3">Press to Play!</a></button>
                     @endif

@@ -20,8 +20,7 @@ Auth::routes();
 // name your routes, so that you don't have to change your authentication if you change your URLs in the future
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-//Route::get('/game/1', 'GameOneController@index');
-//Route::get('/game/2', 'GameTwoController@index');
+
 Route::resource('/game1', 'GameOneController');
 Route::resource('/game2', 'GameTwoController');
 Route::resource('/game3', 'GameThreeController');

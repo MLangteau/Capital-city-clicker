@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="text-center">
-        <h1>Game TWO  WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-----------!</h1>
+        <h1>Game TWO!</h1>
     </div>
 
 @endsection

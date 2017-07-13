@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
+use Auth;
 
 class GameThreeController extends Controller
 {
@@ -17,7 +19,8 @@ class GameThreeController extends Controller
      */
     public function index()
     {
-        return view('game/gamethree');
+        $games = Game::all(); // using Eloquent
+        return view('game/gamethree')->with('games',$games);
     }
 
     /**
