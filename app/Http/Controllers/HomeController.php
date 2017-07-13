@@ -48,6 +48,6 @@ class HomeController extends Controller
     public function index()
     {
         $games = Game::all(); // using Eloquent
-        return view('games.index')->with('games',$games);
+        return view('index')->with('games',$games);
     }
 }

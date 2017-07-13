@@ -13,13 +13,6 @@
     width: 30%;
     position:relative;
 }
-/*.all-games {*/
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*right: 0;*/
-    /*margin: auto;*/
-/*}*/
-
 .gm-title {
     font-size: 15px;
 }
@@ -29,4 +22,3 @@
     right: 0;
     bottom: 0;
 }
-

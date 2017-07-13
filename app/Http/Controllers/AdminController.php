@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $games = Game::all(); // using Eloquent
+        return view('admin')->with('games',$games);
     }
 }
