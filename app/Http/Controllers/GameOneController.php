@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Game;
+//use App\Game;
 use Auth;
+use App\Question;
+use App\Choice;
 
 class GameOneController extends Controller
 {
@@ -19,7 +21,11 @@ class GameOneController extends Controller
      */
     public function index()
     {
-        return view('game/gameone');
+        $questions = Question::all(); // using Eloquent
+        $choices = Choice::all(); // using Eloquent
+//        $choices = Question::find(1)->choices; // using Eloquent
+//        $choices = Choice::all(); // using Eloquent
+        return view('game/gameone')->with('questions',$questions)->with('choices',$choices);
     }
     /**
      * Show the form for creating a new resource.

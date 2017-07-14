@@ -14,10 +14,10 @@ class CreateChoicesTable extends Migration
     public function up()
     {
         Schema::create('choices', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id');   // should be primary key
             $table->string('body');
             $table->integer('question_id');
-            $table->boolean('iscorrect');
+            $table->boolean('iscorrect');// could have TINYINT (1, 0) default should have been 0
             $table->timestamps();
         });
     }
