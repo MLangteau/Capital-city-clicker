@@ -46,8 +46,33 @@ class GameOneController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        //TODO:     take in/grab choice-id from request
+        //TODO:     grab choice-id from request
+//        $userInput = $request->all();     this includes the token
+//        $userInput = array_except($request->all(),['_token']); this excludes the token, but is
+        $userInput = $request->except('_token');
+        dd("HELLO REQUEST as userInput",$userInput);
+        $num_total = 0;
+        $num_correct = 0;
+        $num_incorrect = 0;
+         foreach($userInput as $input){
+             $choice = Choice::find($input);
+             if ($choice->iscorrect){
+                $num_correct++;
+             }
+             else {
+                $num_incorrect++;
+             }
+        }
+//        for($i = 1; $i < count($userInput); $i++) {  old way with the token still there
+//            $choice = Choice::find($userInput[$i]);
+//            if ($choice->iscorrect){
+//                $num_correct++;
+//            }
+//            else {
+//                $num_incorrect++;
+//            }
+//        };
+        dd("num_correct: ". $num_correct . " num_incorrect". $num_incorrect);
         //TODO:     check how many are right
         //TODO:     pass into view
         //TODO:     results view
