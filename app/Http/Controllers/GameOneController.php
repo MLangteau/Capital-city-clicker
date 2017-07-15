@@ -22,8 +22,8 @@ class GameOneController extends Controller
     public function index()
     {
 //        $questions = Question::all(); // using Eloquent
-        $questions = Question::inRandomOrder()->limit(9)->get();  //  SHOULD USE IN PRODUCTION!!!!
-//        $questions = Question::limit(9)->get();
+//        $questions = Question::inRandomOrder()->limit(9)->get();  //  SHOULD USE IN PRODUCTION!!!!
+        $questions = Question::limit(9)->get();
 //        $result = $questions;
         $choices = Choice::all(); // using Eloquent
         return view('game/gameone', compact('questions','choices'));
@@ -75,16 +75,20 @@ class GameOneController extends Controller
                                 ['iscorrect', '=', 1]
                 ])->first();
 
+
+
+
+
                 array_push($actualArray,$correctAnswer->body);     //  Will compare to selected later in blade
             }
         };
 
 //        dd($actualArray,$chosenArray,$correctAnswer->body);
-        dd($actualArray,$chosenArray);
+//        dd($actualArray,$chosenArray);
 
         //TODO:     check how many are right
 //        dd("u_count_correct: ".$u_count_correct." u_count_incorrect: ".$u_count_incorrect." u_count_total: ".$u_count_total);
-        return view('game/results',compact('u_count_correct','u_count_incorrect','u_count_total','$actualArray','$chosenArray'));
+        return view('game/results',compact('u_count_correct','u_count_incorrect','u_count_total','actualArray','chosenArray'));
         //TODO:     pass results into view
     }
 
