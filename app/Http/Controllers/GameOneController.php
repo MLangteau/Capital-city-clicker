@@ -23,10 +23,10 @@ class GameOneController extends Controller
     {
 //        $questions = Question::all(); // using Eloquent
 //        $questions = Question::inRandomOrder()->limit(10)->get();  //  SHOULD USE IN PRODUCTION!!!!
-        $questions = Question::limit(3)->get();
+        $questions = Question::limit(9)->get();
 //        $result = $questions;
         $choices = Choice::all(); // using Eloquent
-        return view('game/gameone')->with('questions',$questions)->with('choices',$choices);
+        return view('game/gameone', compact('questions','choices'));
     }
     /**
      * Show the form for creating a new resource.
@@ -47,35 +47,28 @@ class GameOneController extends Controller
     public function store(Request $request)
     {
         //TODO:     grab choice-id from request
-//        $userInput = $request->all();     this includes the token
-//        $userInput = array_except($request->all(),['_token']); this excludes the token, but is
         $userInput = $request->except('_token');
-        dd("HELLO REQUEST as userInput",$userInput);
-        $num_total = 0;
-        $num_correct = 0;
-        $num_incorrect = 0;
-         foreach($userInput as $input){
-             $choice = Choice::find($input);
-             if ($choice->iscorrect){
-                $num_correct++;
-             }
-             else {
-                $num_incorrect++;
-             }
+//      dd("HELLO REQUEST as userInput",$userInput);
+        $u_count_correct = 0;   //  The number of user's correct choices
+        $u_count_incorrect = 0; //  The number of user's incorrect choices
+        /*
+        /   the $userInput has the choice-id which I read the choice database with
+        /   to get the iscorrect boolean (see which one is the correct choice)
+        /   */
+        foreach($userInput as $input){
+            $u_count_total = (count($userInput));   //  The number of user's total answers
+            $choice = Choice::find($input);
+            if ($choice->iscorrect){
+                $u_count_correct++;
+            }
+            else {
+                $u_count_incorrect++;
+            }
         }
-//        for($i = 1; $i < count($userInput); $i++) {  old way with the token still there
-//            $choice = Choice::find($userInput[$i]);
-//            if ($choice->iscorrect){
-//                $num_correct++;
-//            }
-//            else {
-//                $num_incorrect++;
-//            }
-//        };
-        dd("num_correct: ". $num_correct . " num_incorrect". $num_incorrect);
         //TODO:     check how many are right
-        //TODO:     pass into view
-        //TODO:     results view
+//        dd("u_count_correct: ".$u_count_correct." u_count_incorrect: ".$u_count_incorrect." u_count_total: ".$u_count_total);
+        return view('game/results',compact('u_count_correct','u_count_incorrect','u_count_total'));
+        //TODO:     pass results into view
     }
 
     /**
