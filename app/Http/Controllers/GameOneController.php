@@ -21,10 +21,11 @@ class GameOneController extends Controller
      */
     public function index()
     {
-        $questions = Question::all(); // using Eloquent
+//        $questions = Question::all(); // using Eloquent
+//        $questions = Question::inRandomOrder()->limit(10)->get();  //  SHOULD USE IN PRODUCTION!!!!
+        $questions = Question::limit(3)->get();
+//        $result = $questions;
         $choices = Choice::all(); // using Eloquent
-//        $choices = Question::find(1)->choices; // using Eloquent
-//        $choices = Choice::all(); // using Eloquent
         return view('game/gameone')->with('questions',$questions)->with('choices',$choices);
     }
     /**
@@ -45,7 +46,11 @@ class GameOneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        //TODO:     take in/grab choice-id from request
+        //TODO:     check how many are right
+        //TODO:     pass into view
+        //TODO:     results view
     }
 
     /**
