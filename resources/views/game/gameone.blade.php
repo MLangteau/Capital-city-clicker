@@ -24,7 +24,7 @@
                 </form>
             </div>
         @else
-        <p>No Questions found</p>
-    @endif
+            <p>No Questions found</p>
+        @endif
     </div>
 @endsection
