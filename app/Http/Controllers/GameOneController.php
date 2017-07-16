@@ -21,10 +21,7 @@ class GameOneController extends Controller
      */
     public function index()
     {
-//        $questions = Question::all(); // using Eloquent
-//        $questions = Question::inRandomOrder()->limit(9)->get();  //  SHOULD USE IN PRODUCTION!!!!
-        $questions = Question::limit(9)->get();
-//        $result = $questions;
+        $questions = Question::inRandomOrder()->limit(51)->get();  //  Should use in Production
         $choices = Choice::all(); // using Eloquent
         return view('game/gameone', compact('questions','choices'));
     }
@@ -50,6 +47,7 @@ class GameOneController extends Controller
         $userInput = $request->except('_token');
 
 //      dd("HELLO REQUEST as userInput",$userInput);
+        //TODO:     check how many are right/wrong
         $u_count_correct = 0;   //  The number of user's correct choices
         $u_count_incorrect = 0; //  The number of user's incorrect choices
         /*
@@ -58,10 +56,14 @@ class GameOneController extends Controller
         /   */
         $chosenArray = [];
         $actualArray = [];
+        $questionsArray = [];
         $u_count_total = (count($userInput));   //  The number of user's total answers
         foreach($userInput as $input){
             $choice = Choice::find($input);
             array_push($chosenArray,$choice->body);     //  Always put the selected choice
+
+            $questionsAnswered = Question::find($choice->question_id);
+            array_push($questionsArray,$questionsAnswered->body);
 
             if ($choice->iscorrect){
                 $u_count_correct++;
@@ -74,22 +76,12 @@ class GameOneController extends Controller
                                 ['question_id', '=', $choice->question_id],
                                 ['iscorrect', '=', 1]
                 ])->first();
-
-
-
-
-
                 array_push($actualArray,$correctAnswer->body);     //  Will compare to selected later in blade
             }
         };
-
-//        dd($actualArray,$chosenArray,$correctAnswer->body);
-//        dd($actualArray,$chosenArray);
-
-        //TODO:     check how many are right
-//        dd("u_count_correct: ".$u_count_correct." u_count_incorrect: ".$u_count_incorrect." u_count_total: ".$u_count_total);
-        return view('game/results',compact('u_count_correct','u_count_incorrect','u_count_total','actualArray','chosenArray'));
         //TODO:     pass results into view
+        return view('game/results',compact('u_count_correct','u_count_incorrect',
+            'u_count_total','actualArray','chosenArray','questionsArray'));
     }
 
     /**
