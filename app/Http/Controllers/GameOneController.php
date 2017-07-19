@@ -21,7 +21,7 @@ class GameOneController extends Controller
      */
     public function index()
     {
-        $questions = Question::inRandomOrder()->limit(51)->get();  //  Should use in Production
+        $questions = Question::inRandomOrder()->limit(9)->get();  //  Should use in Production
         $choices = Choice::all(); // using Eloquent
         return view('game/gameone', compact('questions','choices'));
     }
