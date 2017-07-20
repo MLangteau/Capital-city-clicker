@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
+//Route::get('pages/about', 'GameOneController@about')->name('pages.about');
+
 Route::resource('/game1', 'GameOneController');
 Route::resource('/game2', 'GameTwoController');
 Route::resource('/game3', 'GameThreeController');

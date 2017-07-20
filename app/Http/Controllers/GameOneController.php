@@ -14,6 +14,13 @@ class GameOneController extends Controller
     {
         $this->middleware('auth');
     }
+//
+//    public function about() {
+//        $title = 'About Us';
+////        return view('pages.about');
+//        return view('pages/about')->with('title', $title);
+//    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +28,7 @@ class GameOneController extends Controller
      */
     public function index()
     {
-        $questions = Question::inRandomOrder()->limit(9)->get();  //  Should use in Production
+        $questions = Question::inRandomOrder()->limit(12)->get();  //  Should use 9 or 15 in Production
         $choices = Choice::all(); // using Eloquent
         return view('game/gameone', compact('questions','choices'));
     }

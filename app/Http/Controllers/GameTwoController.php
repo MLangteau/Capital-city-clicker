@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Game;
 use Auth;
+use App\Question;
+use App\Choice;
 
 class GameTwoController extends Controller
 {
@@ -19,7 +21,14 @@ class GameTwoController extends Controller
      */
     public function index()
     {
-        return view('game/gametwo');
+        $capState = Question::inRandomOrder()->limit(1)->get();
+        $capitalIs = Choice::where([
+            ['question_id', '=', $capState[0]->id],
+            ['iscorrect', '=', 1]
+        ])->first();
+//        dd($capState[0]->body, $capitalIs->body);
+        $capST = $capState[0];
+        return view('game/gametwo', compact('capST','capitalIs'));
     }
     /**
      * Show the form for creating a new resource.

@@ -63,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link href="{{ asset('css/myGame.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -79,13 +80,16 @@
 
            <div class="container">
                <div class="row">
-                   <div class="col-md-8 col-md-offset-2">
+                   <div class="col-md-8 col-md-offset-2 ">
                        {{--@component('components.who')--}}
                        {{--@endcomponent--}}
-                       <p>Site Purpose:</p>
-                       <p>Games:</p>
-                       <p>Features: Admin and User Logins/Logouts</p>
-                       <p>Tech Stack: PHP, Laravel, JavaScript</p>
+                       <div class="panel-heading welcomeresult">
+                           <h1>Site Purpose: Create Games make it more fun to Learn about Geography!</h1>
+                           <hr>
+                           <h1>Features: Admin and User Logins/Logouts</h1>
+                           <hr>
+                           <h1>Tech Stack: PHP, Laravel, JavaScript</h1>
+                       </div>
                    </div>
                </div>
            </div>
