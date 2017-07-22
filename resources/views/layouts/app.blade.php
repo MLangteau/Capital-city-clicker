@@ -7,15 +7,17 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>{{ config('app.name', 'Geog Games') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/myGame.css') }}" rel="stylesheet">
+    @yield('header-styles')
 </head>
 <body>
     <div id="app">
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -74,8 +76,14 @@
 
         @yield('content')
     </div>
+    @yield('footer-script')
 
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAP_API_KEY')}}">
+    </script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
 </body>
 </html>

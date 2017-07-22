@@ -2,10 +2,33 @@
 <!--{{--@component('components.who')--}}-->
 <!--{{--@endcomponent--}}-->
 @section('content')
-    <div class="panel-heading">
-        <div class="text-center quiz-rect">
-            <h1>Click as CLOSE to the State Capital as possible!</h1>
-            <h3>Find: {{$capitalIs->body}}, {{$capST->body}}</h3>
-        </div>
-    </div>
+
+        <h3 class="map-notes">Click as CLOSE to the State Capital as possible! Find: {{$capitalIs->body}}
+        , {{$capST->body}}</h3>
+
+        <?php
+        $randomCity = $capitalIs->body;
+        $randomST = $capST->body;
+        $location = $randomCity . ", " . $randomST;
+        ?>
+
+        <div id="map"></div>
+
+    {{--<state-location></state-location>--}}
+
+@endsection
+
+{{-- For Google Script Only for certain pages --}}
+@section('footer-script')
+
+
+@endsection
+
+@section('header-styles')
+    {{--<style>--}}
+        {{--#map {--}}
+            {{--height: 400px;--}}
+            {{--width: 90%;--}}
+        {{--}--}}
+    {{--</style>--}}
 @endsection

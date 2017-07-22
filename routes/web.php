@@ -28,6 +28,9 @@ Route::resource('/game2', 'GameTwoController');
 Route::resource('/game3', 'GameThreeController');
 
 Route::prefix('admin')->group(function() {
+    Route::get('/add', 'Auth\AdminLoginController@add')->name('admin.choice-add');
+    Route::post('/save', 'Auth\AdminLoginController@store')->name('admin.choice-save');
+    Route::get('/view/{id}', 'Auth\AdminLoginController@view')->name('admin.choice-view');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');

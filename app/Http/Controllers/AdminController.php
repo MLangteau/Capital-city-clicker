@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Choice;
 use Illuminate\Http\Request;
 use App\Game;
 
@@ -27,5 +28,23 @@ class AdminController extends Controller
     {
         $games = Game::all(); // using Eloquent
         return view('admin')->with('games',$games);
+    }
+
+    public function add()
+    {
+        $choices = Choice::all(); // using Eloquent
+        return view('admin')->with('choices',$choices);
+    }
+
+    public function store(Request $request)
+    {
+        $games = Game::all(); // using Eloquent
+        return view('admin.choice-save');
+    }
+
+    public function view(Choice $choice)
+    {
+        return view('admin.choice-view')
+            ->with('choice',$choice);
     }
 }
