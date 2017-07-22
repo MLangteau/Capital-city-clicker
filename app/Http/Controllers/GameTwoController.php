@@ -24,8 +24,11 @@ class GameTwoController extends Controller
         $capState = Question::inRandomOrder()->limit(1)->get();
         $capitalIs = Choice::where([
             ['question_id', '=', $capState[0]->id],
-            ['iscorrect', '=', 1]
-        ])->first();
+            ['iscorrect', '=', 1],
+        ])
+            ->whereNotNull('lat')
+            ->whereNotNull('lng')
+            ->first();
 //        dd($capState[0]->body, $capitalIs->body);
         $capST = $capState[0];
         return view('game/gametwo', compact('capST','capitalIs'));
