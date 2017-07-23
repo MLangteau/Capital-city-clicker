@@ -1,24 +1,84 @@
 $(document).ready(function () {
 
-//  Near the center of the USA
+//  Near the center of the USA (including Hawaii and Alaska)
     let initialCenter = {
-        lat: 39.498621,
-        lng: -98.54201
+        lat: 40.498621,
+        lng: -128.54201
     };
+//  Near the center of the contiguous USA
+    // let initialCenter = {
+    //     lat: 39.498621,
+    //     lng: -98.54201
+    // };
 
     let optionsBeg = {
-        zoom: 4,
+        zoom: 3,
         // removes map and satellite options from the page
         mapTypeControl: false,
-        maxZoom:6,
-        minZoom:4,
+        maxZoom:10,
+        minZoom:3,
         // Map begins at initial center
         center: initialCenter,
-        styles: [{
-            "featureType": "all",
-            "elementType": "labels",
-            "stylers": [{"visibility": "off"}]
-        }]
+        styles: [
+            //  makes the thick yellow lines for the interstate roads thinner
+            {   "featureType": "road",
+                "elementType": "geometry.stroke",
+                "stylers": [{"visibility": "off"}]
+            },
+            // places dotted line borders on each of the state lines (not a whole outline)
+            {   "featureType": "administrative",
+                "elementType": "geometry.stroke",
+                "stylers": [{"color": "#c9323b"}, {"weight": 1.2}]
+            },
+
+            //  This one is to unLABEL various cities
+            {   "featureType": "administrative.locality",
+                                    "elementType": "labels",
+                    "stylers": [{"visibility": "off"}]
+            }
+            //,
+            //   FOR LATER USE
+            //  This one is to unLABEL each state in the USA as well as other areas of the world
+            // {   "featureType": "administrative.province",
+            //                         "elementType": "labels",
+            //         "stylers": [{"visibility": "off"}]
+            // }
+        ]
+    };
+
+    let optionsStopWhenClick = {
+        // removes map and satellite options from the page
+        mapTypeControl: false,
+        // Map begins at initial center
+        center: initialCenter,
+        // scrollwheel: false,
+        // draggable: false,
+        disableDoubleClickZoom: true,
+        styles: [
+            //  makes the thick yellow lines for the interstate roads thinner
+            {   "featureType": "road",
+                "elementType": "geometry.stroke",
+                "stylers": [{"visibility": "off"}]
+            },
+            // places dotted line borders on each of the state lines (not a whole outline)
+            {   "featureType": "administrative",
+                "elementType": "geometry.stroke",
+                "stylers": [{"color": "#c9323b"}, {"weight": 1.2}]
+            },
+
+            //  This one is to unLABEL various cities
+            {   "featureType": "administrative.locality",
+                "elementType": "labels",
+                "stylers": [{"visibility": "off"}]
+            }
+        //,
+        //   FOR LATER USE
+        //  This one is to unLABEL each state in the USA as well as other areas of the world
+        // {   "featureType": "administrative.province",
+        //                         "elementType": "labels",
+        //         "stylers": [{"visibility": "off"}]
+        // }
+        ]
     };
 
     let map = new google.maps.Map(document.getElementById('map'), optionsBeg);
@@ -26,7 +86,7 @@ $(document).ready(function () {
     google.maps.event.addListener(map, 'click', function (event) {
         // alert('click');
         // cannot click on again if new map is set
-        map = new google.maps.Map(document.getElementById('map'), optionsBeg);
+        map = new google.maps.Map(document.getElementById('map'), optionsStopWhenClick);
 
         // console.log('location', location);
 

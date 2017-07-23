@@ -89,7 +89,8 @@
                            <h1>Features: Admin and User Logins/Logouts</h1>
                            <hr>
                            <h1>Tech Stack: PHP, Laravel, JavaScript, Axios</h1>
-                           <h1>Bootstrap, jQuery, Vue, and Vue slots </h1>
+                           <h1>Bootstrap, jQuery, Vue slots, </h1>
+                           <h1>Blade templates, and MySQL database</h1>
                        </div>
                    </div>
                </div>

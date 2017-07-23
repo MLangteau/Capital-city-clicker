@@ -92,16 +92,8 @@ body {
 
 }
 
-#map {
-    height: 560px;
-    width: 100%;
-}
+/*#map {*/
+    /*height: 400px;*/
+    /*width: 100%;*/
+/*}*/
 
-.map-notes {
-    background: peachpuff;
-    opacity: 1;
-    margin-top: -22px;
-    border-top: red 2px;
-    margin-bottom: -2px;
-    /*border-color: red;*/
-}
