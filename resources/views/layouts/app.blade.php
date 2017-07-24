@@ -79,7 +79,7 @@
     @yield('footer-script')
 
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAP_API_KEY')}}">
+            src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAP_API_KEY')}}&libraries=geometry">
     </script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

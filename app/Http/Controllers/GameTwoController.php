@@ -31,7 +31,10 @@ class GameTwoController extends Controller
             ->first();
 //        dd($capState[0]->body, $capitalIs->body);
         $capST = $capState[0];
-        return view('game/gametwo', compact('capST','capitalIs'));
+
+        $location = $capitalIs->body . ", " . $capST->body;
+
+        return view('game/gametwo', compact('capST','capitalIs', 'location'));
     }
     /**
      * Show the form for creating a new resource.

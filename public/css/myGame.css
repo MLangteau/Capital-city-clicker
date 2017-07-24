@@ -11,18 +11,27 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-
+.menuTitle {
+    background: #fffff9;
+    border: .5em solid blue;
+    font-size: 2.5em;
+    font-weight: bold;
+    opacity: .7;
+    margin-top: -.5em;
+    margin-left: 37%;
+    text-align: center;
+    width: 26%;
+}
 .games-rect {
     background: #fffff9;
     border: .5em solid red;
-    font-size: 15px;
+    font-size: 1.25em;
     font-weight: bold;
-    line-height: 20px;
+    line-height: 1.25em;
     opacity: .7;
     height: 12em;
-    margin-top: 5em;
+    margin-top: 1em;
     margin-left: 5.5%;
-    margin-bottom: 1em;
     text-align: center;
     width: 26%;
     position:relative;
@@ -30,12 +39,12 @@ body {
 .quiz-rect {
     background: #fffff9;
     border: .5em solid red;
-    font-size: 10px;
+    font-size: 1em;
     font-weight: bold;
-    line-height: 20px;
+    line-height: 1.25;
     opacity: .7;
-    height: 16em;
-    margin-top: 0px;
+    height: 11em;
+    margin-top: 0;
     margin-left: 2%;
     margin-bottom: 1em;
     text-align: center;
@@ -43,7 +52,7 @@ body {
     position:relative;
 }
 .gm-title {
-    font-size: 15px;
+    font-size: 1.5em;
 }
 .gm-btn {
     clear: both;
@@ -51,17 +60,15 @@ body {
     right: 0;
     bottom: 0;
 }
-
 .extraSP {
     border: 3em;
 }
-
 .result {
     background: #fffff9;
     border: .5em solid red;
-    font-size: 15px;
+    font-size: 1em;
     font-weight: bold;
-    line-height: 20px;
+    line-height: 1.25;
     opacity: .6;
     margin-top: 1em;
     margin-left: 20%;
@@ -74,26 +81,13 @@ body {
     margin-bottom: 1%;
     background-color: black !important;
 }
-.welcomeresult {
+.welcome_page {
     background: #fffff9;
-    border: .5em solid red;
-    /*font-size: 15px;*/
+    border: .5em solid blue;
     font-weight: bold;
-    /*line-height: 20px;*/
     opacity: .6;
-    margin-top: 1em;
     margin-left: 20%;
-    margin-bottom: 1em;
     text-align: center;
     width: 60%;
     color: black !important;
 }
-.state-res {
-
-}
-
-/*#map {*/
-    /*height: 400px;*/
-    /*width: 100%;*/
-/*}*/
-

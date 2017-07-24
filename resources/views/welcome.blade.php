@@ -7,6 +7,10 @@
 
         <title>City Clicker</title>
 
+        <!-- Bootstrap CDNs-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -70,10 +74,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
+                        <button class="btn-lg btn-success"><a href="{{ url('/home') }}">Home</a></button>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <button class="btn-lg btn-success"><a href="{{ url('/login') }}">Login</a></button>
+                        <button class="btn-lg btn-success"><a href="{{ url('/register') }}">Register</a></button>
                     @endif
                 </div>
             @endif
@@ -83,14 +87,16 @@
                    <div class="col-md-8 col-md-offset-2 ">
                        {{--@component('components.who')--}}
                        {{--@endcomponent--}}
-                       <div class="panel-heading welcomeresult">
-                           <h1>Site Purpose: Create Games make it more fun to Learn about Geography!</h1>
+                       <div class="panel-heading welcome_page">
+                           <h3>Site Purpose: To make Learning about Geography more FUN!</h3>
                            <hr>
-                           <h1>Features: Admin and User Logins/Logouts</h1>
+                           <h3>Features: Admin and User Log-ins/Log-outs</h3>
                            <hr>
-                           <h1>Tech Stack: PHP, Laravel, JavaScript, Axios</h1>
-                           <h1>Bootstrap, jQuery, Vue slots, </h1>
-                           <h1>Blade templates, and MySQL database</h1>
+                           <h3>Tech Stack: PHP, Laravel, JavaScript,</h3>
+                           <h3>Axios, Bootstrap, jQuery, Vue slots, </h3>
+                           <h3>Blade templates, and MySQL database</h3>
+                           <h3>Progressive Enhancement (CSS grid)</h3>
+                           <h3>(Future Development) </h3>
                        </div>
                    </div>
                </div>

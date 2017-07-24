@@ -3,14 +3,16 @@
 <!--{{--@endcomponent--}}-->
 @section('content')
 <div>
-        <div id="floating-panel">*********<br>Click State Capital:<br> {{$capitalIs->body}}
-        , {{$capST->body}} <br> **** </div>
-
-        <?php
-        $randomCity = $capitalIs->body;
-        $randomST = $capST->body;
-        $location = $randomCity . ", " . $randomST;
-        ?>
+    <div id="Alaska_pointer">Hint: Alaska &#8593</div>
+    <div id="floating-panel">****<strong>  Directions:  </strong>****<br><strong>Click on</strong> the State Capital:
+        <strong> {{$location}}</strong><br><strong>Zoom</strong> In or Out (if needed)<br><strong>After you click
+        </strong>the Capital, <strong>Click on red marker and flag</strong></div>
+    <div id="Hawaii_pointer"><strong>Hint:</strong> Hawaii &#8595</div>
+        <input type="hidden" value="<?php echo $location; ?>" id="real_location" />
+        <input type="hidden" value="<?php echo $capitalIs->body; ?>" id="real_capital" />
+        <input type="hidden" value="<?php echo $capitalIs->lat; ?>" id="real_lat" />
+        <input type="hidden" value="<?php echo $capitalIs->lng; ?>" id="real_lng" />
+        <input type="hidden" value="<?php echo $capST->body; ?>" id="real_state" />
 
         <div id="map"></div>
 
@@ -18,9 +20,11 @@
 </div>
 @endsection
 
-{{-- For Google Script Only for certain pages --}}
+{{-- For Google Script Only for certain pages ; The folowing section is for javascript--}}
 @section('footer-script')
+<script type="javascript">
 
+</script>
 
 @endsection
 
@@ -30,41 +34,59 @@
         body {
             background: white;
         }
+
         #map {
-            height: 600px;
+            /*height: 560px;*/
+            height: 42em;
             width: 100%;
         }
-        /* Optional: Makes the sample page fill the window. */
-        /*html, body {*/
-            /*height: 100%;*/
-            /*margin: 0;*/
-            /*padding: 0;*/
-        /*}*/
+
         #floating-panel {
-            position: absolute;
-            top: 40%;
+            top: 30%;
             left: 2%;
+            border: 3px solid blue;
+            position: absolute;
             z-index: 5;
             background-color: #fff;
             color: #2b542c;
             padding: 5px;
-            border: 3px solid red;
             text-align: center;
             font-family: 'Roboto','sans-serif';
             line-height: 30px;
             padding-left: 10px;
+            opacity: .6;
         }
-        /*#mapper_notes {*/
-            /*opacity: 1;*/
-            /*color: white;*/
-            /*border-color: red;*/
-        /*}*/
 
+        #Alaska_pointer {
+            top: 15%;
+            left: 10%;
+            border: 3px solid red;
+            position: absolute;
+            z-index: 5;
+            background-color: #fff;
+            color: #2b542c;
+            padding: 5px;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+            opacity: .6;
+        }
+
+        #Hawaii_pointer {
+            top: 55%;
+            left: 10%;
+            border: 3px solid red;
+            position: absolute;
+            z-index: 5;
+            background-color: #fff;
+            color: #2b542c;
+            padding: 5px;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+            opacity: .6;
+        }
     </style>
-    {{--<style>--}}
-        {{--#map {--}}
-            {{--height: 400px;--}}
-            {{--width: 90%;--}}
-        {{--}--}}
-    {{--</style>--}}
 @endsection

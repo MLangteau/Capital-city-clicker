@@ -13,7 +13,7 @@ require('./bootstrap');
 //
 // Vue.use(VueGoogleMaps,{
 //     load: {
-//         key: 'AIzaSyCF8L1f_W6Q5j0JAdMMUwYyvWypTx0x98Q'
+//         key: ''
 //     }
 // });
 
