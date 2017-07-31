@@ -26,6 +26,8 @@ Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout
 Route::resource('/game1', 'GameOneController');
 Route::resource('/game2', 'GameTwoController');
 Route::resource('/game3', 'GameThreeController');
+Route::resource('/game4', 'GameFourController');
+
 
 Route::prefix('admin')->group(function() {
     Route::get('/add', 'Auth\AdminLoginController@add')->name('admin.choice-add');
