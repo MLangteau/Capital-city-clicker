@@ -65,25 +65,26 @@ class GameOneController extends Controller
         $actualArray = [];
         $questionsArray = [];
         $u_count_total = (count($userInput));   //  The number of user's total answers
-        foreach($userInput as $input){
-            $choice = Choice::find($input);
-            array_push($chosenArray,$choice->body);     //  Always put the selected choice
+        if ($u_count_total > 0) {
+            foreach ($userInput as $input) {
+                $choice = Choice::find($input);
+                array_push($chosenArray, $choice->body);     //  Always put the selected choice
 
-            $questionsAnswered = Question::find($choice->question_id);
-            array_push($questionsArray,$questionsAnswered->body);
+                $questionsAnswered = Question::find($choice->question_id);
+                array_push($questionsArray, $questionsAnswered->body);
 
-            if ($choice->iscorrect){
-                $u_count_correct++;
-                array_push($actualArray,$choice->body);     //  Will compare to selected later in blade
-            }
-            else {
-                $u_count_incorrect++;
-                //  use question_id and get choice from db where iscorrect is true (1)
-                $correctAnswer = Choice::where([
-                                ['question_id', '=', $choice->question_id],
-                                ['iscorrect', '=', 1]
-                ])->first();
-                array_push($actualArray,$correctAnswer->body);     //  Will compare to selected later in blade
+                if ($choice->iscorrect) {
+                    $u_count_correct++;
+                    array_push($actualArray, $choice->body);     //  Will compare to selected later in blade
+                } else {
+                    $u_count_incorrect++;
+                    //  use question_id and get choice from db where iscorrect is true (1)
+                    $correctAnswer = Choice::where([
+                        ['question_id', '=', $choice->question_id],
+                        ['iscorrect', '=', 1]
+                    ])->first();
+                    array_push($actualArray, $correctAnswer->body);     //  Will compare to selected later in blade
+                }
             }
         };
         //TODO:     pass results into view

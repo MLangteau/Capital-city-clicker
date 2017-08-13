@@ -3,18 +3,20 @@
 <!--{{--@endcomponent--}}-->
 @section('content')
 <div>
-    <div id="Alaska_pointer">Hint: Alaska &#8593</div>
     <div id="floating-panel">****<strong>  Directions:  </strong>****<br><strong>Click on</strong> the State Capital:
         <strong> {{$location}}</strong><br><strong>Zoom</strong> In or Out (if needed)<br><strong>After you click
-        </strong>the Capital, <strong>Click on red marker and flag</strong></div>
-    <div id="Hawaii_pointer"><strong>Hint:</strong> Hawaii &#8595</div>
-        <input type="hidden" value="<?php echo $location; ?>" id="real_location" />
-        <input type="hidden" value="<?php echo $capitalIs->body; ?>" id="real_capital" />
-        <input type="hidden" value="<?php echo $capitalIs->lat; ?>" id="real_lat" />
-        <input type="hidden" value="<?php echo $capitalIs->lng; ?>" id="real_lng" />
-        <input type="hidden" value="<?php echo $capST->body; ?>" id="real_state" />
+        </strong>the Capital, <strong>Click on red marker and flag</strong>
+        {{--<input class="btn-success btn-lg center-block extraSP" type="submit" value="Submit"/>--}}
+        <button class="results-btn btn-success"><a href="/game2">Reset this Game</a></button><br>
+        <button class="results-btn btn-success"><a href="/home">Go to Games Menu!</a></button>
+    </div>
+    <input type="hidden" value="<?php echo $location; ?>" id="real_location" />
+    <input type="hidden" value="<?php echo $capitalIs->body; ?>" id="real_capital" />
+    <input type="hidden" value="<?php echo $capitalIs->lat; ?>" id="real_lat" />
+    <input type="hidden" value="<?php echo $capitalIs->lng; ?>" id="real_lng" />
+    <input type="hidden" value="<?php echo $capST->body; ?>" id="real_state" />
 
-        <div id="map"></div>
+    <div id="map"></div>
 
     {{--<state-location></state-location>--}}
 </div>
