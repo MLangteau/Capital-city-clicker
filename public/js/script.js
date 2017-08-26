@@ -144,11 +144,11 @@ $(document).ready(function () {
         let markers = [
             {
                 coords:{lat: parseLat, lng: parseLng},
+                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
                 content: '<h6>Actual Capital: '+ location +'</h6>'
             },
             {
                 coords:{lat: eventLat, lng: eventLng},
-                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
                 content: '<h6>You were ' + Math.round(distance) + ' miles off</h6>'
             }
         ];

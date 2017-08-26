@@ -3,10 +3,10 @@
 <!--{{--@endcomponent--}}-->
 @section('content')
 <div>
-    <div id="floating-panel">****<strong>  Directions:  </strong>****<br><strong>Click on</strong> the State Capital:
-        <strong> {{$location}}</strong><br><strong>Zoom</strong> In or Out (if needed)<br><strong>After you click
-        </strong>the Capital, <strong>Click on red marker and flag</strong>
-        {{--<input class="btn-success btn-lg center-block extraSP" type="submit" value="Submit"/>--}}
+    <div id="floating-panel">****<strong>  Directions:  </strong>****<br><strong>1. Zoom</strong> In/Out or <strong> Scroll</strong> to
+        <strong> {{$location}}</strong> then <br><strong>Click on </strong>that State Capital:<br>2. After you click
+        </strong>the Capital, <strong> Click on red marker (Your click) and flag (Capital)</strong>
+        <br>
         <button class="results-btn btn-success"><a href="/game2">Reset this Game</a></button><br>
         <button class="results-btn btn-success"><a href="/home">Go to Games Menu!</a></button>
     </div>

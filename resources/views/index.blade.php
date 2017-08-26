@@ -15,7 +15,7 @@
                     @if ($game->status)
                         <button class="gm-btn btn-lg"><a href="/game{{$game->id}}">Press to Play!</a></button>
                     @else
-                        <button class="gm-btn btn-lg"><a href="/game4">Press to Play!</a></button>
+                        {{--<button class="gm-btn btn-lg"><a href="/game3">Press to Play!</a></button>--}}
                     @endif
                 </div>
             @endforeach
